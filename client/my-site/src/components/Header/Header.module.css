@@ -1,0 +1,47 @@
+.text {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #689CD2;
+  color: #fff;
+  font-family: Uni Sans;
+}
+
+.headerLogo {
+  padding: 10px 15px;
+  font-size: 20px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.headerButton {
+  cursor: pointer;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+}
+
+.headerItem {
+  padding: 10px 15px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.headerItem:hover {
+  background-color: #FF9900;
+  border-radius: 4px;
+}
+
+.headerLogo:hover {
+  background-color: #FF9900;
+  border-radius: 4px;
+}
+
+
