@@ -7,13 +7,13 @@ const Nav = () => {
     <div>
       <div className={style.profileInfo}>
         <div className={style.profileSection}>
-          <a href='#'>My page</a>
+          <a href='#' className={style.text}>My page</a>
         </div>
         <div className={style.profileSection}>
-          <a href='#'>Communities</a>
+          <a href='#' className={style.text}>Communities</a>
         </div>
         <div className={style.profileSection}>
-          <a href='#'>Messages</a>
+          <a href='#' className={style.text}>Messages</a>
         </div>
       </div>
     </div>

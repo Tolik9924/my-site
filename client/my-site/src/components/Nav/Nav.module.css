@@ -1,0 +1,20 @@
+.profileInfo {
+  background: white;
+  width: 150px;
+}
+
+.text {
+  text-decoration: none;
+  color: black
+}
+
+.profileSection {
+  padding: 10px 15px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.profileSection:hover {
+  background-color: #008cff;
+  border-radius: 4px;
+}
