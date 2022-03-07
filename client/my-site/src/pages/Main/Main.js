@@ -2,10 +2,13 @@ import React from 'react';
 import News from '../News/News';
 import { Route, Routes } from 'react-router-dom';
 import Game from '../Game/Game';
+import Todo from '../Todo/Todo';
+
+import style from './Main.module.css';
 
 const Main = () => {
   return(
-    <div>
+    <div className={style.container}>
         <Routes>
         <Route 
             path="/" 
@@ -21,6 +24,14 @@ const Main = () => {
                 <News />
               </div>
             } />
+          <Route
+          path="/todo"
+          element={
+            <div>
+              <Todo />
+            </div>
+          } 
+          />
         </Routes>
       </div>
   );

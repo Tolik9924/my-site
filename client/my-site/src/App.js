@@ -5,12 +5,14 @@ import Main from './pages/Main/Main';
 
 function App() {
   return (
-    <div className="grid-init grid">
-      <header className="l-header"><Header /></header>
-      <nav className="l-nav"><Nav /></nav>
-      <main className="box-init box l-main"><Main /></main>
-      <footer className="box-init box l-footer">FOOTER</footer>
-    </div>
+      <div className="wrapper">
+        <header className="header"><Header /></header>
+      <div className="main">
+        <nav className="nav"><Nav /></nav>
+        <main className="info"><Main /></main>
+      </div>
+        <footer className="footer">FOOTER</footer>
+      </div>
   );
 }
 

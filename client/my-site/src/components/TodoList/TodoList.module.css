@@ -1,0 +1,25 @@
+.itemTodo {
+    display: grid;
+    grid-template: 1fr / 1fr minmax(5%, auto);
+    padding: 14px;
+    width: 250px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 15px;
+    background: #689CD2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.itemText {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.strike {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: line-through;
+}
