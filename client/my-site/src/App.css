@@ -16,6 +16,7 @@
   display: grid;
   grid-area: main;
   grid-template: 1fr / minmax(200px, auto) 1fr;
+  min-height: 100%;
 }
 
 .footer {

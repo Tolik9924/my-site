@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import TodoList from '../../components/TodoList/TodoList';
 
@@ -6,6 +6,15 @@ import style from './Todo.module.css';
 
 const Todo = () => {
     const [todos, setTodos] = useState([]);
+    const [completedTodo, setCompletedTodo] = useState(0);
+
+    useEffect(() => {
+        let count = 0; 
+        todos.forEach((todo) => {
+            if(todo.complete) count += 1;
+        })
+        setCompletedTodo(count);
+      }, [todos]);
 
     const addTask = (userInput) => {
         if(userInput) {
@@ -31,22 +40,12 @@ const Todo = () => {
         
     }
 
-    const doneTasks = () => {
-        let done = 0;
-
-        let todosArr = Object.entries(todos)
-        for(let i = 0; i <  todosArr.length; i++) {
-            if(todosArr[i][1].complete === true) {
-                done += 1;
-            }
-        }
-        return done;
-    }
+    let totalCounterTodo = todos.length;
 
     return (
             <div>
                 <header className={style.header}>
-                    <h1>List of tasks: {doneTasks()}/{todos.length}</h1>
+                    <h1>List of tasks: {completedTodo}/{totalCounterTodo}</h1>
                 </header>
                 <TodoForm addTask={addTask} />
                 {todos.map((todo) => {
@@ -56,7 +55,7 @@ const Todo = () => {
                             key={todo.id}
                             toggleTask={handleToggle}
                             removeTask={removeTask}
-                            doneTasks={doneTasks}
+                            doneTasks={completedTodo}
                         />
                     );
                 })}
