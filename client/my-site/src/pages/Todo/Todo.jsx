@@ -1,46 +1,45 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addTodo, fetchTodos } from '../../asyncActions/todos';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import TodoList from '../../components/TodoList/TodoList';
+import { addTodosAction, handleToggleTodo, removeTodoAction, completedTodoAction} from '../../store/todoReducer';
 
 import style from './Todo.module.css';
 
 const Todo = () => {
-    const [todos, setTodos] = useState([]);
     const [completedTodo, setCompletedTodo] = useState(0);
+
+    const dispatch = useDispatch();
+    const todosRedux = useSelector(state => state.todos.todos);
 
     useEffect(() => {
         let count = 0; 
-        todos.forEach((todo) => {
+        todosRedux.forEach((todo) => {
             if(todo.complete) count += 1;
         })
         setCompletedTodo(count);
-      }, [todos]);
+      }, [todosRedux]);
 
     const addTask = (userInput) => {
         if(userInput) {
             const newItem = {
-                id: Math.random().toString(36).substr(2, 9),
-                task: userInput,
-                complete: false
+                text: userInput
             }
-            setTodos([...todos, newItem]);
+          dispatch(addTodo(newItem));
         }
     }
 
     const removeTask = (id) => {
-        setTodos([...todos.filter((todo) => todo.id !== id)]);
+        dispatch(removeTodoAction(id));
     }
 
     const handleToggle = (id) => {
-        setTodos([
-            ...todos.map((todo) =>
-               todo.id === id ? { ...todo, complete: !todo.complete }  : { ...todo }
-            )
-        ]);
-        
+        dispatch(handleToggleTodo(id));
     }
 
-    let totalCounterTodo = todos.length;
+    let totalCounterTodo = todosRedux.length;
 
     return (
             <div>
@@ -48,14 +47,14 @@ const Todo = () => {
                     <h1>List of tasks: {completedTodo}/{totalCounterTodo}</h1>
                 </header>
                 <TodoForm addTask={addTask} />
-                {todos.map((todo) => {
+                <button className={style.showTodo} onClick={() => dispatch(fetchTodos())}>Add todos from database</button>
+                {todosRedux.map((todo) => {
                     return (
                         <TodoList
                             todo={todo}
-                            key={todo.id}
+                            key={todo._id}
                             toggleTask={handleToggle}
                             removeTask={removeTask}
-                            doneTasks={completedTodo}
                         />
                     );
                 })}
