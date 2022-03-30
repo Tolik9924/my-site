@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import style from './TodoForm.module.css'
 
 const TodoForm = ({
-    addTask
+    addTask,
+    completeAllTasks
 }) => {
     const [userInput, setUserInput] = useState('');
 
@@ -24,17 +25,25 @@ const TodoForm = ({
     }
 
     return (
-        <form className={style.formAdd} onSubmit={handleSubmit}>
-            <input
-                value={userInput}
-                type="text"
-                onChange={handleChange}
-                onKeyDown={handleKeyPress}
-                placeholder="Input value..."
-                className={style.inputTask}
-            />
-            <button className={style.buttonAdd}>Add</button>
-        </form>
+        <div>
+            <form className={style.formAdd} onSubmit={handleSubmit}>
+                <input
+                    value={userInput}
+                    type="text"
+                    onChange={handleChange}
+                    onKeyDown={handleKeyPress}
+                    placeholder="Input value..."
+                    className={style.inputTask}
+                />
+                <button className={style.buttonAdd}>Add</button>
+            </form>
+            <div className={style.completeAllTasks}>
+                <button className={style.buttonAdd}
+                    onClick={() => completeAllTasks()}>
+                    Complete All Tasks
+            </button>
+            </div>
+        </div>
     );
 }
 

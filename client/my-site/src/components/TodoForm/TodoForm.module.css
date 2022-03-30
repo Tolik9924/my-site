@@ -29,3 +29,7 @@
     display: inline-block;
     font-size: 16px;
 }
+
+.completeAllTasks {
+    padding: 15px 50px;
+}
